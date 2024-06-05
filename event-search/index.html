@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Eventlist Home</title>
+    <link rel="stylesheet" href="styles.css" />
+    <script src="https://unpkg.com/htmx.org@1.6.1/dist/htmx.min.js"></script>
+  </head>
+  <body>
+    <nav>
+      <a href="index.html">Home</a>
+      <a href="#">Events</a>
+      <a href="#">Profile</a>
+    </nav>
+    <div id="content">
+      <h1>Welcome to Eventlist</h1>
+      <input
+        type="text"
+        id="search-bar"
+        placeholder="Search for events..."
+        oninput="filterEvents()"
+      />
+      <div class="event-list" id="event-list">
+        <div
+          class="event"
+          hx-get="event-details.html"
+          hx-trigger="click"
+          hx-target="#event-details"
+          hx-swap="innerHTML show"
+        >
+          <img src="https://via.placeholder.com/150" alt="Event Image" />
+          <div>
+            <h3>Event 1</h3>
+            <h5>Location: Halifax</h5>
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+          </div>
+        </div>
+        <div
+          class="event"
+          hx-get="event-details.html"
+          hx-trigger="click"
+          hx-target="#event-details"
+          hx-swap="innerHTML show"
+        >
+          <img src="https://via.placeholder.com/150" alt="Event Image" />
+          <div>
+            <h3>Event 2</h3>
+            <h5>Location: Calgary</h5>
+            <p>Nullam id dolor id nibh ultricies vehicula ut id elit.</p>
+          </div>
+        </div>
+        <div
+          class="event"
+          hx-get="event-details.html"
+          hx-trigger="click"
+          hx-target="#event-details"
+          hx-swap="innerHTML show"
+        >
+          <img src="https://via.placeholder.com/150" alt="Event Image" />
+          <div>
+            <h3>Event 3</h3>
+            <h5>Location: Halifax</h5>
+            <p>Curabitur blandit tempus porttitor.</p>
+          </div>
+        </div>
+        <div
+          class="event"
+          hx-get="event-details.html"
+          hx-trigger="click"
+          hx-target="#event-details"
+          hx-swap="innerHTML show"
+        >
+          <img src="https://via.placeholder.com/150" alt="Event Image" />
+          <div>
+            <h3>Event 4</h3>
+            <h5>Location: Waterloo</h5>
+            <p>Curabitur blandit tempblandit teus porttitor.</p>
+          </div>
+        </div>
+      </div>
+      <div id="event-details">
+        <!-- Event details will be loaded here -->
+      </div>
+    </div>
+    <footer>
+      <p>Some random text here. More random text here.</p>
+      <p>&copy; 2024 Eventlist. All rights reserved.</p>
+    </footer>
+    <script src="script.js"></script>
+  </body>
+</html>
