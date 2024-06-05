@@ -7,7 +7,7 @@
 * *Last Modification Date*: 05 June 2024
 * *Lab URL*: <https://github.com/Jay-003/CSCI4177>
 * *Git URL*: <https://git.cs.dal.ca/sicheng/csci-4177-group19>
-* *Netlify URL*: <https://csci4177-eventList.netlify.app>
+* *Netlify URL*: <https://csci4177-eventlist.netlify.app>
 Group Links
 
 * *Group Github URL*: <https://github.com/Jay-003/CSCI4177>
