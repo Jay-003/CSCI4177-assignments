@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Feedback</title>
+    <link rel="stylesheet" href="styles.css" />
+    <script src="https://unpkg.com/htmx.org@1.5.0"></script>
+    <link
+      href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+      <a class="navbar-brand" href="#">Feedback</a>
+      <div class="collapse navbar-collapse">
+        <ul class="navbar-nav ml-auto">
+          <li class="nav-item">
+            <a class="nav-link" href="index.html">Home</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="events.html">Events</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="profile.html">Profile</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="feedback.html">Feedback</a>
+          </li>
+        </ul>
+      </div>
+    </nav>
+
+    <div id="content">
+      <h2>Attended Events</h2>
+      <div class="event-list" id="event-list">
+        <div class="event" id="event1">
+          <img src="https://via.placeholder.com/150" alt="Event Image" />
+          <div>
+            <h3>Event 1</h3>
+            <h5>Location: Halifax</h5>
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+            <button
+              class="btn btn-primary"
+              hx-get="feedback-form.html"
+              hx-target="#feedback-form1"
+            >
+              Provide Feedback
+            </button>
+            <div id="feedback-form1"></div>
+            <div id="feedback1" class="feedback" style="display: none"></div>
+          </div>
+        </div>
+        <div class="event" id="event2">
+          <img src="https://via.placeholder.com/150" alt="Event Image" />
+          <div>
+            <h3>Event 2</h3>
+            <h5>Location: Calgary</h5>
+            <p>Nullam id dolor id nibh ultricies vehicula ut id elit.</p>
+            <button
+              class="btn btn-primary"
+              hx-get="feedback-form.html"
+              hx-target="#feedback-form2"
+            >
+              Provide Feedback
+            </button>
+            <div id="feedback-form2"></div>
+            <div id="feedback2" class="feedback" style="display: none"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <footer>
+      <p>Some random text and copyrights</p>
+    </footer>
+
+    <script>
+      document.addEventListener("htmx:afterOnLoad", function (event) {
+        if (event.detail.requestConfig.verb === "get") {
+          const button = event.detail.elt
+          const targetId = button.getAttribute("hx-target").substring(1)
+          const form = document.querySelector(`#${targetId} .feedback-form`)
+          form.setAttribute(
+            "data-feedback-target",
+            targetId.replace("feedback-form", "feedback")
+          )
+
+          form.addEventListener("submit", function (event) {
+            event.preventDefault()
+            const formData = new FormData(form)
+            const feedbackDiv = document.getElementById(
+              form.dataset.feedbackTarget
+            )
+            feedbackDiv.textContent = formData.get("feedback")
+            feedbackDiv.style.display = "block"
+            form.parentElement.innerHTML = ""
+          })
+        }
+      })
+    </script>
+  </body>
+</html>
